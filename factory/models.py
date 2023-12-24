@@ -11,6 +11,8 @@ class Factory(models.Model):
     mail = models.EmailField(max_length=150, verbose_name='почта')
     production = models.TextField(verbose_name='продукция')
 
+    objects = models.Manager()
+
     def __str__(self):
         return f'{self.title}'
 

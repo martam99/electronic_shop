@@ -5,5 +5,6 @@ from employee.models import User
 
 
 # Create your views here.
+
 class UserCreateAPIView(generics.CreateAPIView):
     queryset = User.objects.all()

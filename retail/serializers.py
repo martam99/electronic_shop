@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from SP.models import SP
+from factory.models import Factory
 from retail.models import Retail, Store, Contacts, Products
 
 
@@ -12,6 +14,18 @@ class ContactsSerializer(serializers.ModelSerializer):
 class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
+        fields = '__all__'
+
+
+class FactorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Factory
+        fields = '__all__'
+
+
+class SPSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SP
         fields = '__all__'
 
 

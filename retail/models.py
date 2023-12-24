@@ -24,10 +24,10 @@ class Retail(models.Model):
 
 
 class Store(models.Model):
-    company_name = models.ForeignKey(Retail, on_delete=models.CASCADE, verbose_name='название компании')
+    company_name = models.ForeignKey(Retail, on_delete=models.CASCADE, verbose_name='компания')
     store_name = models.CharField(max_length=150, verbose_name='название магазина')
     supplier = models.ForeignKey(Supplier, on_delete=models.DO_NOTHING, verbose_name='поставщик')
-    debt_to_supplier = models.DecimalField(max_digits=15, decimal_places=14, verbose_name='Задолженность перед поставщиком')
+    debt_to_supplier = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Задолженность перед поставщиком в RUB')
     creating_date = models.DateTimeField(verbose_name='дата создания', default=now)
 
     objects = models.Manager()
