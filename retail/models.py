@@ -9,7 +9,7 @@ from supplier.models import Supplier
 # Create your models here.
 class Retail(models.Model):
     company_name = models.CharField(max_length=150, verbose_name='название компании')
-    sp = models.ForeignKey(SP, on_delete=models.CASCADE, verbose_name='ИП')
+    sp = models.OneToOneField(SP, on_delete=models.CASCADE, verbose_name='ИП')
     opened_date = models.DateField(verbose_name='Дата создания', default=now)
     factory = models.ForeignKey(Factory, on_delete=models.DO_NOTHING, verbose_name='Завод')
 

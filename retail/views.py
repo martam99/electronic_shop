@@ -17,3 +17,13 @@ class StoreListApiView(generics.ListAPIView):
     queryset = Store.objects.all()
     serializer_class = StoreSerializer
     pagination_class = StorePaginator
+
+
+class RetailDetailApiView(generics.RetrieveAPIView):
+    queryset = Retail.objects.all()
+    serializer_class = RetailSerializer
+
+
+class StoreDetailApiView(generics.RetrieveAPIView):
+    queryset = Store.objects.all()
+    serializer_class = StoreSerializer

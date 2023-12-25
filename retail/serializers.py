@@ -1,5 +1,5 @@
+from django.db.models import Count
 from rest_framework import serializers
-
 from SP.models import SP
 from factory.models import Factory
 from retail.models import Retail, Store, Contacts, Products
@@ -33,8 +33,8 @@ class RetailSerializer(serializers.ModelSerializer):
     store_count = serializers.SerializerMethodField()
 
     def get_store_count(self, obj):
-        obj = Store.objects.all()
-        return obj.count()
+        obj = Store.objects.values('id').annotate(total=Count('company_name'))
+        return obj
 
     class Meta:
         model = Retail

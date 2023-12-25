@@ -9,6 +9,8 @@ class Supplier(models.Model):
     mail = models.EmailField(max_length=150, verbose_name='почта')
     phone = models.CharField(max_length=150, verbose_name='номер телефона')
 
+    objects = models.Manager()
+
     def __str__(self):
         return f'{self.fullname}'
 

@@ -11,3 +11,8 @@ class FactoryListApiView(generics.ListAPIView):
     queryset = Factory.objects.all()
     serializer_class = FactorySerializer
     pagination_class = FactoryPaginator
+
+
+class FactoryDetailApiView(generics.RetrieveAPIView):
+    queryset = Factory.objects.all()
+    serializer_class = FactorySerializer
