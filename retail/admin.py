@@ -17,6 +17,7 @@ class StoreAdmin(admin.ModelAdmin):
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ('mail', 'country', 'city', 'street', 'house_num', 'store')
+    list_filter = ('city',)
 
 
 @admin.register(Products)

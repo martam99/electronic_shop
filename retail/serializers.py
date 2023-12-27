@@ -1,6 +1,7 @@
 from django.db.models import Count
 from rest_framework import serializers
 from SP.models import SP
+from employee.permissions import UserPermissionsAll
 from factory.models import Factory
 from retail.models import Retail, Store, Contacts, Products
 
@@ -33,12 +34,13 @@ class RetailSerializer(serializers.ModelSerializer):
     store_count = serializers.SerializerMethodField()
 
     def get_store_count(self, obj):
-        obj = Store.objects.values('id').annotate(total=Count('company_name'))
-        return obj
+        store_count = Store.objects.filter(company_name=obj).values('id').annotate(total=Count('company_name'))
+        return store_count.count()
 
     class Meta:
         model = Retail
         fields = '__all__'
+        permission_classes = [UserPermissionsAll]
 
 
 class StoreSerializer(serializers.ModelSerializer):
@@ -48,3 +50,5 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ['company_name', 'store_name', 'contacts', 'products', 'debt_to_supplier', 'creating_date']
+        permission_classes = [UserPermissionsAll]
+
