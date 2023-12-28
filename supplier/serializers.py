@@ -8,5 +8,4 @@ class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
         fields = '__all__'
-        permission_classes = [UserPermissionsAll]
 

@@ -8,6 +8,5 @@ class FactorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Factory
         fields = ['title', 'head', 'address', 'phone', 'fax', 'mail', 'production']
-        permission_classes = [UserPermissionsAll]
 
 

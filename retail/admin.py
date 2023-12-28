@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.db.models import QuerySet
 from retail.models import Retail, Store, Contacts, Products
 
 
@@ -12,6 +12,11 @@ class RetailAdmin(admin.ModelAdmin):
 @admin.register(Store)
 class StoreAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'store_name', 'debt_to_supplier', 'creating_date')
+    actions = ['depth_clearer']
+
+    @admin.action(description='Очистить задолженность перед поставщиком')
+    def depth_clearer(self, request, queryset: QuerySet):
+        queryset.update(debt_to_supplier=0)
 
 
 @admin.register(Contacts)

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # my apps
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
     'employee',
     'SP',
     'factory',
@@ -55,6 +56,10 @@ INSTALLED_APPS = [
     'supplier'
 
 
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 REST_FRAMEWORK = {

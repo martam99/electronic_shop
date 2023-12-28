@@ -8,5 +8,4 @@ class SPSerializer(serializers.ModelSerializer):
     class Meta:
         model = SP
         fields = "__all__"
-        permission_classes = [UserPermissionsAll]
 

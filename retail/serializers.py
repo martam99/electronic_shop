@@ -40,7 +40,6 @@ class RetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Retail
         fields = '__all__'
-        permission_classes = [UserPermissionsAll]
 
 
 class StoreSerializer(serializers.ModelSerializer):
@@ -50,5 +49,4 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ['company_name', 'store_name', 'contacts', 'products', 'debt_to_supplier', 'creating_date']
-        permission_classes = [UserPermissionsAll]
 
