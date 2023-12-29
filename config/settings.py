@@ -53,9 +53,8 @@ INSTALLED_APPS = [
     'SP',
     'factory',
     'retail',
-    'supplier'
-
-
+    'supplier',
+    'drf_yasg',
 ]
 
 AUTHENTICATION_BACKENDS = [

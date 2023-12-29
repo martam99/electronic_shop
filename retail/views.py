@@ -1,7 +1,5 @@
-from django.shortcuts import render
-from rest_framework import generics
-from rest_framework.permissions import IsAdminUser
-
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, filters
 from employee.permissions import IsSuperUser, UserPermissionsAll
 from retail.models import Retail, Store
 from retail.paginators import RetailPaginator, StorePaginator
@@ -60,8 +58,6 @@ class StoreListApiView(generics.ListAPIView):
     serializer_class = StoreSerializer
     pagination_class = StorePaginator
     permission_classes = [UserPermissionsAll]
-    filter = ['contacts__country']
-
 
 
 class StoreDestroyApiView(generics.DestroyAPIView):

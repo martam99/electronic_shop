@@ -1,9 +1,9 @@
 from django.db.models import Count
 from rest_framework import serializers
 from SP.models import SP
-from employee.permissions import UserPermissionsAll
 from factory.models import Factory
 from retail.models import Retail, Store, Contacts, Products
+from django_filters import rest_framework as filters
 
 
 class ContactsSerializer(serializers.ModelSerializer):
@@ -42,6 +42,12 @@ class RetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class FilterCountryListSerializer(serializers.ListSerializer):
+    def to_representation(self, data):
+        data = data.filter(country=data)
+        return super(FilterCountryListSerializer, self).to_representation(data)
+
+
 class StoreSerializer(serializers.ModelSerializer):
     contacts = ContactsSerializer(source='contacts_set', read_only=True, many=True)
     products = ProductsSerializer(source='products_set', read_only=True, many=True)
@@ -49,4 +55,3 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ['company_name', 'store_name', 'contacts', 'products', 'debt_to_supplier', 'creating_date']
-
