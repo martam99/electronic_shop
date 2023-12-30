@@ -58,10 +58,10 @@ class StoreListApiView(generics.ListAPIView):
     serializer_class = StoreSerializer
     pagination_class = StorePaginator
     permission_classes = [UserPermissionsAll]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['contacts__country']
 
 
 class StoreDestroyApiView(generics.DestroyAPIView):
     queryset = Store.objects.all()
     permission_classes = [IsSuperUser]
-
-

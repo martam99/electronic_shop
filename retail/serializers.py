@@ -42,12 +42,6 @@ class RetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class FilterCountryListSerializer(serializers.ListSerializer):
-    def to_representation(self, data):
-        data = data.filter(country=data)
-        return super(FilterCountryListSerializer, self).to_representation(data)
-
-
 class StoreSerializer(serializers.ModelSerializer):
     contacts = ContactsSerializer(source='contacts_set', read_only=True, many=True)
     products = ProductsSerializer(source='products_set', read_only=True, many=True)
